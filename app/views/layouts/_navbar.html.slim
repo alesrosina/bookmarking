@@ -1,13 +1,19 @@
 nav.navbar.navbar-default
   .container-fluid
     .navbar-header
-      button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+      button.navbar-toggle.collapsed aria-expanded='false' data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="/"  Bookmarks
-    /! Collect the nav links, forms, and other content for toggling
+      a.navbar-brand href='/'  Bookmarks
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
         = nav_link 'New', new_bookmark_path
+
+      =form_tag '/search', method: 'get', class: 'navbar-form navbar-right'
+        .input-group
+          = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search'
+          .input-group-btn
+            button.btn.btn-default type="submit"
+              i.glyphicon.glyphicon-search
