@@ -1,0 +1,24 @@
+h1
+  | Bookmarks
+  = link_to 'New Bokmark', new_bookmark_path, class: 'btn btn-primary pull-right'
+
+#accordion.panel-group aria-multiselectable='true' role='tablist'
+  - @sites.each_with_index do |site, index|
+    .panel.panel-default
+      .panel-heading role='tab' id="site_header_#{index}"
+        h4.panel-title
+          a aria-controls='collapseOne' aria-expanded='true' data-parent='#accordion' data-toggle='collapse' href="#site_content_#{index}" role='button'
+            = site.url
+      .panel-collapse.collapse aria-labelledby="site_header_#{index}" role='tabpanel' id="site_content_#{index}"
+        .panel-body
+          - site.bookmarks.each do |bookmark|
+            .bookmark-box
+              = link_to bookmark.url, target: '_blank' do
+                = screenshot_image_tag bookmark.url
+                .description
+                  = bookmark.title
+              .actions
+                = link_to edit_bookmark_path(bookmark), class: 'btn btn-primary btn-xs' do
+                  i.glyphicon.glyphicon-pencil
+                = link_to bookmark, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do
+                  i.glyphicon.glyphicon-remove

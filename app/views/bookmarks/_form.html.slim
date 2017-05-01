@@ -1,0 +1,9 @@
+.row
+  .col-sm-6
+    = simple_form_for @bookmark do |f|
+      = f.input :title
+      = f.input :shortening
+      = f.input :url, type: :url
+      .clearfix
+        = f.button :submit, class: 'btn btn-success pull-right'
+        = link_to 'Cancel', bookmarks_path, class: 'btn btn-default'

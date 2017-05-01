@@ -1,0 +1,22 @@
+.bookmark-box {
+  position: relative;
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  border-radius: $thumbnail-border-radius;
+  border: 1px solid $thumbnail-border;
+
+  .description {
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .actions {
+    position: absolute;
+    right: 0;
+    top: 5px;
+
+    .btn {
+      margin-right: 5px;
+    }
+  }
+}
