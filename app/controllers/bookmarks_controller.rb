@@ -5,10 +5,14 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    Bookmark.create! permitted_params
-
-    flash[:notice] = 'Bookmark was successfully created.'
-    redirect_to bookmarks_path
+    @bookmark = Bookmark.create permitted_params
+    if @bookmark.valid?
+      flash[:notice] = 'Bookmark was successfully created.'
+      redirect_to bookmarks_path
+    else
+      flash[:error] = 'There were errors. Please fix them below.'
+      render 'new'
+    end
   end
 
   def new
@@ -20,11 +24,14 @@ class BookmarksController < ApplicationController
   end
 
   def update
-    bookmark = Bookmark.find params[:id]
-    bookmark.update permitted_params
-
-    flash[:notice] = 'Bookmark was successfully updated.'
-    redirect_to bookmarks_path
+    @bookmark = Bookmark.find params[:id]
+    if @bookmark.update permitted_params
+      flash[:notice] = 'Bookmark was successfully updated.'
+      redirect_to bookmarks_path
+    else
+      flash[:error] = 'There were errors. Please fix them below.'
+      render 'edit'
+    end
   end
 
   def destroy
