@@ -4,6 +4,8 @@
       = f.input :title
       = f.input :shortening
       = f.input :url, type: :url
+      = f.input :all_tags
+      p.small Use comma "," for separating tags.
       .clearfix
         = f.button :submit, class: 'btn btn-success pull-right'
         = link_to 'Cancel', bookmarks_path, class: 'btn btn-default'

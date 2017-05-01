@@ -18,13 +18,4 @@
       .panel-collapse.collapse aria-labelledby="site_header_#{index}" role='tabpanel' id="site_content_#{index}"
         .panel-body
           - site.bookmarks.each do |bookmark|
-            .bookmark-box
-              = link_to bookmark.url, target: '_blank' do
-                = screenshot_image_tag bookmark.url
-                .description
-                  = bookmark.title
-              .actions
-                = link_to edit_bookmark_path(bookmark), class: 'btn btn-primary btn-xs' do
-                  i.glyphicon.glyphicon-pencil
-                = link_to bookmark, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do
-                  i.glyphicon.glyphicon-remove
+            = render bookmark
