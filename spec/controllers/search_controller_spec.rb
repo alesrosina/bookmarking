@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe SearchController, type: :controller do
   describe 'GET #index' do
+    let!(:bookmark1) { create(:bookmark, url: 'http://www.test.com/whatever', title: 'Whatever') }
+    let!(:bookmark2) { create(:bookmark, url: 'http://www.example.com/something', title: 'Something') }
+    let!(:bookmark3) { create(:bookmark, url: 'http://www.example.com/other_hing', title: 'Other thing') }
+
     it 'responds successfully with an HTTP 200 status code' do
       get :index
       expect(response).to be_success
@@ -14,11 +18,12 @@ RSpec.describe SearchController, type: :controller do
     end
 
     it 'searches via querystring' do
-      create(:bookmark, url: 'http://www.test.com/whatever', title: 'Whatever')
-      create(:bookmark, url: 'http://www.example.com/something', title: 'Something')
-      create(:bookmark, url: 'http://www.example.com/other_hing', title: 'Other thing')
-
       get :index, params: { query: 'example' }
+      expect(assigns(:bookmarks).count).to eq 2
+    end
+
+    it 'searches case insensitive' do
+      get :index, params: { query: 'eXaMPLe' }
       expect(assigns(:bookmarks).count).to eq 2
     end
   end

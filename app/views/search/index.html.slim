@@ -1,7 +1,10 @@
 h1= "Search results for \"#{params[:query]}\""
-.list-group
+.list-group.search-results
   - if @bookmarks.blank?
     .list-group-item No results.
   - @bookmarks.each do |bookmark|
     = link_to bookmark.url, target: '_blank', class: 'list-group-item' do
       = "#{bookmark.title} (#{bookmark.url})"
+      .tags
+        - bookmark.tags.each do |tag|
+          span.label.label-default= tag.name

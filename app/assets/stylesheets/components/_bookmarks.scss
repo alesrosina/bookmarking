@@ -4,10 +4,23 @@
   margin: 0 10px 10px 0;
   border-radius: $thumbnail-border-radius;
   border: 1px solid $thumbnail-border;
+  width: 165px;
+  text-align: center;
 
   .description {
     text-align: center;
     margin: 5px 0;
+  }
+
+  .tags {
+    margin-bottom: 10px;
+    .label {
+      margin-right: 5px;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
   }
 
   .actions {
