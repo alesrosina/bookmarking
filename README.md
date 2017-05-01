@@ -15,6 +15,10 @@ After that, run normal rails commands:
   $ rake db:migrate
 ```
 
+Project is using [dotenv](https://github.com/bkeepers/dotenv) for simulating environmental variables. You can see all the variables you need to set in `.env.sample` file.
+
+For getting screen capture images, you need to register at http://www.page2images.com/ and acquire **Direct Linking API Key**. This key is then set to `PAGE2IMAGES_API` environmental variable.
+
 Run project with:
 
 ```
