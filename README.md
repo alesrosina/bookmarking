@@ -39,4 +39,4 @@ Project is using [rspec-rsils](https://github.com/rspec/rspec-rails), so for run
 
 Project is deployed to Heroku via automatic deploys from `master` branch, so no deployment scripts are necessary.
 
-Project can be found at: https://bookmarking-demo.herokuapp.com/
+Project can be found at: http://bookmarking-demo.herokuapp.com/
