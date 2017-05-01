@@ -3,6 +3,12 @@
 /  = link_to 'New Bokmark', new_bookmark_path, class: 'btn btn-primary pull-right'
 
 #accordion.panel-group aria-multiselectable='true' role='tablist'
+  - if @sites.blank?
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title No bookmarks yet.
+        = link_to 'Why not adding one?', new_bookmark_path
+
   - @sites.each_with_index do |site, index|
     .panel.panel-default
       .panel-heading role='tab' id="site_header_#{index}"
