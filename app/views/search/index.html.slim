@@ -1,0 +1,5 @@
+h1= "Search results for \"#{params[:query]}\""
+.list-group
+  - @bookmarks.each do |bookmark|
+    = link_to bookmark.url, target: '_blank', class: 'list-group-item' do
+      = "#{bookmark.title} (#{bookmark.url})"

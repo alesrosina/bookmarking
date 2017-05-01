@@ -20,7 +20,8 @@ class BookmarksController < ApplicationController
   end
 
   def update
-    Bookmark.update permitted_params
+    bookmark = Bookmark.find params[:id]
+    bookmark.update permitted_params
 
     flash[:notice] = 'Bookmark was successfully updated.'
     redirect_to bookmarks_path

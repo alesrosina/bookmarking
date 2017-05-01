@@ -3,7 +3,7 @@ html
   head
     title Bookmarking
     = csrf_meta_tags
-    meta content="initial-scale=1, width=device-width" name="viewport" /
+    meta content='initial-scale=1, width=device-width' name='viewport' /
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
   body
@@ -11,14 +11,14 @@ html
     .container
       - if flash[:notice]
         .alert.alert-success
-          button.close aria-label="Close" data-dismiss="alert" type="button"
-            span aria-hidden="true"  &times;
+          button.close aria-label='Close' data-dismiss='alert' type='button'
+            span aria-hidden='true'  &times;
           = flash[:notice]
 
       - if flash[:error]
         .alert.alert-warning
-          button.close aria-label="Close" data-dismiss="alert" type="button"
-            span aria-hidden="true"  &times;
+          button.close aria-label='Close' data-dismiss='alert' type='button'
+            span aria-hidden='true'  &times;
           = flash[:error]
 
       = yield
