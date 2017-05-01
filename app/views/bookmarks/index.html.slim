@@ -1,6 +1,6 @@
-h1
-  | Bookmarks
-  = link_to 'New Bokmark', new_bookmark_path, class: 'btn btn-primary pull-right'
+/h1
+/  | Bookmarks
+/  = link_to 'New Bokmark', new_bookmark_path, class: 'btn btn-primary pull-right'
 
 #accordion.panel-group aria-multiselectable='true' role='tablist'
   - @sites.each_with_index do |site, index|

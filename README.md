@@ -1,24 +1,38 @@
-# README
+This is a very simple Rails project for storing bookmarks. Application is quite bare-boned, but the purpose of it is to showcase a simple Rails application.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Init
 
-Things you may want to cover:
+It is standard Rails project, so for running it you need:
 
-* Ruby version
+ - Ruby 2.4
+ - Rails 5
+ - Postgres DB
 
-* System dependencies
+After that, run normal rails commands:
+```
+  $ bundle install
+  $ rake db:setup
+  $ rake db:migrate
+```
 
-* Configuration
+Run project with:
 
-* Database creation
+```
+  $ rails server
+```
 
-* Database initialization
+And go to `http://localhost:3000`.
 
-* How to run the test suite
+## Tests
 
-* Services (job queues, cache servers, search engines, etc.)
+Project is using [rspec-rsils](https://github.com/rspec/rspec-rails), so for running tests use:
 
-* Deployment instructions
+```
+  $ bundle exec rspec
+```
 
-* ...
+## Deployment
+
+Project is deployed to Heroku via automatic deploys from `master` branch, so no deployment scripts are necessary.
+
+Project can be found at: https://bookmarking-demo.herokuapp.com/
