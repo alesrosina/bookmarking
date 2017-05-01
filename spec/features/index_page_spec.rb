@@ -13,12 +13,18 @@ RSpec.feature 'Index page', js: true do
     fill_in 'Title', with: 'Gmail'
     fill_in 'Shortening', with: 'FL'
     fill_in 'Url', with: 'http://google.com/mail'
+    fill_in 'All tags', with: 'tag1, tag2, test-tag'
     click_on 'Create Bookmark'
 
     expect(page).to have_content 'http://google.com'
     click_on 'http://google.com'
 
     expect(page).to have_content 'Gmail'
+    expect(page).to have_content 'tag1'
+    expect(page).to have_content 'tag2'
+    expect(page).to have_content 'test-tag'
+
+    expect(Tag.count).to eq 3
   end
 
   describe 'with three added bookmarks' do

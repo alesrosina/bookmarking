@@ -1,0 +1,13 @@
+.bookmark-box
+  = link_to bookmark.url, target: '_blank' do
+    = screenshot_image_tag bookmark.url
+    .description
+      = bookmark.title
+  .tags
+    - bookmark.tags.each do |tag|
+      span.label.label-default= tag.name
+  .actions
+    = link_to edit_bookmark_path(bookmark), class: 'btn btn-primary btn-xs' do
+      i.glyphicon.glyphicon-pencil
+      = link_to bookmark, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do
+        i.glyphicon.glyphicon-remove
