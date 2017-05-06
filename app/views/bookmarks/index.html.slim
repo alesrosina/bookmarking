@@ -11,7 +11,11 @@
         h4.panel-title
           a aria-controls='collapseOne' aria-expanded='true' data-parent='#accordion' data-toggle='collapse' href="#site_content_#{index}" role='button'
             = site.url
-      .panel-collapse.collapse aria-labelledby="site_header_#{index}" role='tabpanel' id="site_content_#{index}"
+      .panel-collapse.collapse aria-labelledby="site_header_#{index}" role='tabpanel' id="site_content_#{index}" class="#{'in' if index == 0}"
         .panel-body
-          - site.bookmarks.each do |bookmark|
-            = render bookmark
+          - if params[:tag_name].present?
+            - site.bookmarks.tagged_with(params[:tag_name]).each do |bookmark|
+              = render bookmark
+          - else
+            - site.bookmarks.each do |bookmark|
+              = render bookmark

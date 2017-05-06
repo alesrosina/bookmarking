@@ -11,6 +11,18 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav
         = nav_link 'New', new_bookmark_path
 
+        li.dropdown
+          a.dropdown-toggle aria-expanded='false' aria-haspopup='true' data-toggle='dropdown' href='#' role='button'
+            | Filter by Tag
+            span.caret
+          ul.dropdown-menu
+            - Tag.used.each do |tag|
+              = nav_link tags_path(tag.name) do
+                = tag.name
+                span.badge.pull-right= tag.bookmarks.count
+
+
+
       =form_tag '/search', method: 'get', class: 'navbar-form navbar-right'
         .input-group
           = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search'
