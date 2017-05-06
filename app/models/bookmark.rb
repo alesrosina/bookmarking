@@ -8,6 +8,8 @@ class Bookmark < ApplicationRecord
   before_validation :set_parent_site
   around_destroy :destroy_orphaned_parent
 
+  scope :tagged_with, -> (tag_name) { joins(:tags).where('tags.name=?', tag_name) }
+
   def all_tags=(names)
     self.tags = names.split(",").map do |name|
       Tag.where(name: name.strip).first_or_create!
