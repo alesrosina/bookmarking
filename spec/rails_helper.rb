@@ -15,7 +15,6 @@ Capybara.register_driver :poltergeist do |app|
 end
 
 Capybara.javascript_driver = :poltergeist
-Capybara.wait_on_first_by_default = true
 Capybara.default_max_wait_time = 15 # seconds
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
