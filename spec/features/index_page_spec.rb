@@ -1,13 +1,14 @@
-# coding: utf-8
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.feature 'Index page', js: true do
-  scenario 'Visiting a blank index' do
+RSpec.describe 'Index page', js: true, type: :feature do # rubocop:disable Metrics/BlockLength
+  it 'Visiting a blank index' do
     visit '/'
     expect(page).to have_content 'No bookmarks yet'
   end
 
-  scenario 'Adding a new bookmark' do
+  it 'Adding a new bookmark' do
     visit '/'
     click_on 'New'
     fill_in 'Title', with: 'Gmail'
@@ -28,12 +29,26 @@ RSpec.feature 'Index page', js: true do
   end
 
   describe 'with three added bookmarks' do
-    let!(:bookmark1) { create(:bookmark, url: 'http://www.test.com/whatever', title: 'Whatever', all_tags: 'testTag, whateverTag') }
-    let!(:bookmark2) { create(:bookmark, url: 'http://www.example.com/something', title: 'Something', all_tags: 'testTag') }
+    let!(:bookmark1) do
+      create(
+        :bookmark,
+        url: 'http://www.test.com/whatever',
+        title: 'Whatever',
+        all_tags: 'testTag, whateverTag'
+      )
+    end
+    let!(:bookmark2) do
+      create(
+        :bookmark,
+        url: 'http://www.example.com/something',
+        title: 'Something',
+        all_tags: 'testTag'
+      )
+    end
     let!(:bookmark3) { create(:bookmark, url: 'http://www.example.com/other_thing', title: 'Other thing') }
-    let!(:tag1) {create(:tag, name: 'hiddenTag')}
+    let!(:tag1) { create(:tag, name: 'hiddenTag') }
 
-    scenario 'shows sorted bookmarks with tags' do
+    it 'shows sorted bookmarks with tags' do
       visit '/'
 
       expect(page).to have_text 'http://www.test.com'
@@ -54,7 +69,7 @@ RSpec.feature 'Index page', js: true do
       expect(page).not_to have_text 'whateverTag'
     end
 
-    scenario 'shows only used tags in navbar' do
+    it 'shows only used tags in navbar' do
       visit '/'
       find('a', text: 'Filter by Tag').click
 
@@ -63,7 +78,7 @@ RSpec.feature 'Index page', js: true do
       expect(page).not_to have_text 'hiddenTag'
     end
 
-    scenario 'search with search form' do
+    it 'search with search form' do
       visit '/'
       fill_in 'query', with: 'thing'
       click_on 'search-submit'

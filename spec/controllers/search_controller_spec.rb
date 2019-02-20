@@ -1,15 +1,23 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe SearchController, type: :controller do
   describe 'GET #index' do
-    let!(:bookmark1) { create(:bookmark, url: 'http://www.test.com/whatever', title: 'Whatever', all_tags: 'tag1, tag2') }
-    let!(:bookmark2) { create(:bookmark, url: 'http://www.example.com/something', title: 'Something') }
-    let!(:bookmark3) { create(:bookmark, url: 'http://www.example.com/other_hing', title: 'Other thing', all_tags: 'tag1, tag-thing2') }
+    let!(:bookmark1) do
+      create(:bookmark, url: 'http://www.test.com/whatever', title: 'Whatever', all_tags: 'tag1, tag2')
+    end
+    let!(:bookmark2) do
+      create(:bookmark, url: 'http://www.example.com/something', title: 'Something')
+    end
+    let!(:bookmark3) do
+      create(:bookmark, url: 'http://www.example.com/other_hing', title: 'Other thing', all_tags: 'tag1, tag-thing2')
+    end
 
     it 'responds successfully with an HTTP 200 status code' do
       get :index
-      expect(response).to be_success
-      expect(response).to have_http_status(200)
+      expect(response).to be_successful
+      expect(response).to have_http_status(:ok)
     end
 
     it 'renders the index template' do
