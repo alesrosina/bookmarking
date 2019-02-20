@@ -1,8 +1,9 @@
-# coding: utf-8
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.feature 'New bookmark page', js: true do
-  scenario 'Validation fails on blank fileds' do
+RSpec.describe 'New_bookmark page', js: true, type: :feature do
+  it 'Validation fails on blank fileds' do
     visit '/bookmarks/new'
     click_on 'Create Bookmark'
 

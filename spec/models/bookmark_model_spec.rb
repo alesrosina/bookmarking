@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Bookmark, type: :model do
@@ -27,7 +29,8 @@ RSpec.describe Bookmark, type: :model do
   end
 
   describe 'tags' do
-    let!(:bookmark) { create :bookmark, all_tags: 'tag1, tag2'}
+    let!(:bookmark) { create :bookmark, all_tags: 'tag1, tag2' }
+
     it 'adds new tags' do
       expect(Tag.count).to eq 2
       bookmark.all_tags = 'tag1, tag2, tag3'
