@@ -8,7 +8,7 @@ gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.2.2'
 
 # frontend gems
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'rubocop', require: false
 gem 'rubocop-rspec', require: false
