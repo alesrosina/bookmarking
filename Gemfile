@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 # basic gems
 gem 'pg'
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 5.2.2'
 
 # frontend gems
